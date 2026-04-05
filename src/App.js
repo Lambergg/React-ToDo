@@ -1,8 +1,12 @@
 import { useState } from "react";
 import initialTodos from "./todos.js";
-import TodoList from "./TodoList";
+import TodoList from "./TodoList.js";
+import TodoAdd from "./TodoAdd.js";
 
 export default function App() {
+  const add = (deed) => {
+    setTodos([...todos, deed]);
+  };
   const [todos, setTodos] = useState(initialTodos);
   const setDone = (key) => {
     const newTodos = [...todos];
@@ -25,6 +29,7 @@ export default function App() {
       </nav>
       <main className="context px-6 py-6">
         <TodoList list={todos} setDone={setDone} del={del} />
+        <TodoAdd add={add} />
       </main>
     </div>
   );
